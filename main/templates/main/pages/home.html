@@ -1,0 +1,38 @@
+{% include 'main/partials/head.html' %}
+{% load static %}
+<body class="body-index">
+    <div class="form-group" id="group">
+        <p style="text-align:center">
+            <img src="{% static 'img/pig.png' %}" alt="money">
+        </p>
+        <h1>
+            Já parou para pensar para onde vai todo o 
+            <span>seu dinheiro?</span>
+        </h1>
+        <h3>Responda algumas perguntas e saiba:</h3>
+        <ul style=" max-width: 390px;text-align: left;margin: 0 auto;">
+            <li>
+                Quais são os seus maiores gastos?
+            </li>
+            <li>
+                Sobra ou não dinheiro no final do mês?
+            </li>
+            <li>
+                Dicas incríveis para multiplicar o seu dinheiro
+            </li>
+        </ul>
+        <button class="btn btn-primary btn-lg proximo" id="iniciar" type="button">
+            Iniciar agora
+            <a href="/home"></a>
+        </button>
+        {% include 'main/partials/input_moradia.html' %}
+        {% include 'main/partials/income.html' %}
+        {% include 'main/partials/finale.html' %}
+        {% include 'main/partials/cheers.html' %}
+        {% include 'main/partials/education.html' %}
+
+    </div>
+
+
+</body>
+</html>

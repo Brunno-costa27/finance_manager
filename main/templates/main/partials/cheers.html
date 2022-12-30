@@ -1,0 +1,31 @@
+{% include 'main/partials/head.html' %}
+{% load static %}
+
+<body class="body-saude">
+    <div class="form-group-02">
+        <div class="info">
+            <h2>Meu gasto mensal com:</h2>
+            <label>
+                Saúde
+            </label>
+            <br>
+            <span>
+                Exemplo: planos, seguros, exames,outros
+            </span>
+            <div class="valor">
+                <form method="post" class="form">
+                    {% csrf_token %}
+                    {{ form.value }}
+                    <button class="btn btn-primary btn-lg proximo" type="submit" id="saude-voltar">
+                        Anterior
+                    </button>
+                    <button class="btn btn-primary btn-lg proximo" type="submit" id="saude">
+                        Próximo
+                    </button>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>

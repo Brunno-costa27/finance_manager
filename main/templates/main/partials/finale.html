@@ -1,0 +1,49 @@
+{% include 'main/partials/head.html' %}
+{% load static %}
+
+<body id="refresh"> 
+    <div class="responstas-FP">
+        <section id="resumo-simulado">
+            
+            <div id="top-color">
+                <p class="hidden-xs">
+                    <img src="{% static 'img/trofeu.png' %}" alt="trofeu">
+                </p>
+                <h1>
+                    Parabéns, sobrou R$ <span id="saldo">{{ result }}</span> em seu orçamento.
+                </h1>
+            </div>
+
+            <div id="resultado-graph">
+                <h2>
+                    Meu gasto total: R$ <span id="gasto-total">0,00</span>
+                </h2>
+                <div class="graph">
+                             <div class="vai-dar-certo">
+                                <canvas id="myChart">
+                                </canvas> 
+                             </div>
+                            {% comment %} <div id="legend">
+                                <p>
+                                    <span style="background:#93a20f">
+                                        Moradia
+                                    </span>
+                                </p>
+                                <p>
+                                    <span style="background:#caa80e">
+                                        Saúde
+                                    </span>
+                                </p>
+                                <p>
+                                    <span style="background:#d76a00">
+                                        Educação
+                                    </span>
+                                </p> 
+                                
+                            </div> {% endcomment %}
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

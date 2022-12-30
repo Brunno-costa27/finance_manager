@@ -1,0 +1,32 @@
+{% include 'main/partials/head.html' %}
+{% load static %}
+
+
+<body class="body-renda">
+    <div class="form-group-09">
+        <div class="info">
+            <h2>Informe o valor de sua:</h2>
+            <label>
+                Renda
+            </label>
+            <br>
+            <span>
+                (sálario, freelance, aposentadoria)
+            </span>
+            <div class="valor">
+                <form method="post" class="form">
+                    {% csrf_token %}
+                    {{ form.value }}
+                    <button class="btn btn-primary btn-lg proximo" type="submit" id="renda-voltar">
+                        Anterior
+                    </button>
+                    <button class="btn btn-primary btn-lg proximo" type="submit" id="renda">
+                        Finalizar
+                    </button>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>
