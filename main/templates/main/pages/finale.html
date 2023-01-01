@@ -1,0 +1,134 @@
+{% include 'main/partials/head.html' %}
+{% load static %}
+
+<body id="refresh"> 
+    <div class="responstas-FP">
+        <section id="resumo-simulado">
+            
+            <div id="top-color">
+                <p class="hidden-xs">
+                    <img src="{% static 'img/trofeu.png' %}" alt="trofeu">
+                </p>
+                <h1>
+                    Parabéns, sobrou R$ <span id="saldo"></span> em seu orçamento.
+                </h1>
+            </div>
+
+            <div id="resultado-graph">
+                <h2>
+                    Meu gasto total: R$ <span id="gasto-total"></span>
+                </h2>
+                <div class="graph">
+                    <div class="vai-dar-certo">
+                        <canvas id="myChart">
+                        </canvas> 
+                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="detalhes" class="col-md-12 col-sm-12 col-xs-12 bg-gray">
+            <h2>Detalhamento de seus gastos</h2>
+
+            <div>
+                <p>
+                    <span class="nospace">
+                        <b>Moradia:</b>
+                        <span class="percVal" id="porcentagem-moradia">
+                            
+                        </span>
+                    </span>
+
+                    <span class="nospace">
+                        <b>Atual:</b>
+
+                        <span class="utilizado" id="valor-atual-moradia">
+                            30,00 
+                        </span>
+                    </span>
+
+                    <span class="nospace">
+                        <b>Ideal até:</b>
+
+                        <span class="utilizado">
+                            300,00 
+                        </span>
+                    </span>
+                </p>
+
+                <div class="progress">
+                    <div class="progress-bar progress-moradia" id="barra-moradia" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:10%">
+
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <p>
+                    <span class="nospace">
+                        <b>Saúde:</b>
+                        <span class="percVal" id="porcentagem-saude">
+                            
+                        </span>
+                    </span>
+    
+                    <span class="nospace">
+                        <b>Atual:</b>
+    
+                        <span class="utilizado" id="valor-atual-saude">
+                            30,00 
+                        </span>
+                    </span>
+    
+                    <span class="nospace">
+                        <b>Ideal até:</b>
+    
+                        <span class="utilizado">
+                            300,00 
+                        </span>
+                    </span>
+                </p>
+    
+                <div class="progress warning">
+                    <div class="progress-bar progress-saude" id="barra-saude" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:10%">
+                    
+                    </div>
+            </div>
+
+            <div>
+                <p>
+                    <span class="nospace">
+                        <b>Educação:</b>
+                        <span class="percVal" id="porcentagem-educacao">
+                            
+                        </span>
+                    </span>
+    
+                    <span class="nospace">
+                        <b>Atual:</b>
+    
+                        <span class="utilizado" id="valor-atual-educacao">
+                            30,00 
+                        </span>
+                    </span>
+    
+                    <span class="nospace">
+                        <b>Ideal até:</b>
+    
+                        <span class="utilizado">
+                            300,00 
+                        </span>
+                    </span>
+                </p>
+    
+                <div class="progress">
+                    <div class="progress-bar progress-educacao" id="barra-educacao" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:10%">
+                    
+                    </div>
+            </div>
+            
+        </section>
+    </div>
+    
+</body>
+</html>

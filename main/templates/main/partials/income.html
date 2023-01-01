@@ -14,16 +14,22 @@
                 (sálario, freelance, aposentadoria)
             </span>
             <div class="valor">
-                <form method="post" class="form">
+                {% comment %} <form method="post" class="form">
                     {% csrf_token %}
-                    {{ form.value }}
+                    {% include 'main/partials/input_moradia.html' %}
+                    {{ finance.moradia }}
+                    {% include 'main/partials/cheers.html' %} 
+                    {{ finance.saude }}
+                    {% include 'main/partials/education.html' %}
+                    {{ finance.educacao }}
+                    {{ finance.renda }}
                     <button class="btn btn-primary btn-lg proximo" type="submit" id="renda-voltar">
                         Anterior
                     </button>
                     <button class="btn btn-primary btn-lg proximo" type="submit" id="renda">
                         Finalizar
                     </button>
-                </form>
+                </form> {% endcomment %}
             </div>
             
         </div>

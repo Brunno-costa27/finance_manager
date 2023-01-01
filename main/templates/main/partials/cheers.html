@@ -13,16 +13,16 @@
                 Exemplo: planos, seguros, exames,outros
             </span>
             <div class="valor">
-                <form method="post" class="form">
+                 {% comment %} <form method="post" class="form">
                     {% csrf_token %}
-                    {{ form.value }}
-                    <button class="btn btn-primary btn-lg proximo" type="submit" id="saude-voltar">
-                        Anterior
-                    </button>
-                    <button class="btn btn-primary btn-lg proximo" type="submit" id="saude">
-                        Próximo
-                    </button>
+                    {{ finance.saude }}
                 </form>
+                <button class="btn btn-primary btn-lg proximo" type="submit" id="saude-voltar">
+                    Anterior
+                </button>
+                <button class="btn btn-primary btn-lg proximo" type="submit" >
+                    Próximo
+                </button>  {% endcomment %}
             </div>
             
         </div>

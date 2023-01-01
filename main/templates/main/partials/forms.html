@@ -1,0 +1,44 @@
+{% include 'main/partials/head.html' %}
+{% load static %}
+
+<form method="POST" class="form">
+    {% csrf_token %}
+    <div class="form-group-01" id="esconder-moradia">
+        {% include 'main/partials/input_moradia.html' %}
+        {{ finance.moradia }}
+        <button class="btn btn-primary btn-lg proximo" type="submit" id="moradia">
+            Próximo
+        </button> 
+    </div>
+    <div class="form-group-02" id="esconder-saude">
+        {% include 'main/partials/cheers.html' %} 
+        {{ finance.saude }}
+        <button class="btn btn-primary btn-lg proximo" type="submit" id="voltar-para-moradia">
+            Anterior
+        </button>
+        <button class="btn btn-primary btn-lg proximo" type="submit" id="proximo-saude">
+            Próximo
+        </button> 
+    </div>
+    <div class="form-group-03" id="esconder-educacao">
+        {% include 'main/partials/education.html' %}
+        {{ finance.educacao }}
+        <button class="btn btn-primary btn-lg proximo" type="submit" id="educacao-voltar">
+            Anterior
+        </button>
+        <button class="btn btn-primary btn-lg proximo" type="submit" id="proximo-renda">
+            Próximo
+        </button> 
+    </div>
+    <div class="form-group-09" id="esconder-renda">
+        {% include 'main/partials/income.html' %} 
+        {{ finance.renda }}
+        <button class="btn btn-primary btn-lg proximo" type="submit" id="renda-voltar">
+            Anterior
+        </button>
+        <button class="btn btn-primary btn-lg proximo" type="submit" id="renda">
+            Finalizar
+        </button>
+    </div>
+
+</form>
