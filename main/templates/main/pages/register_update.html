@@ -1,0 +1,41 @@
+{% include 'main/partials/head.html' %}
+{% load static %}
+
+
+
+
+
+<body id="muda">
+    <form method="POST" class="form">
+        {% csrf_token %}
+        <div class="form-group-01">
+            {% include 'main/partials/input_moradia.html' %}
+            {{ finance.moradia }}
+            
+        </div>
+
+        <div class="form-group-02" id="body-saude">
+            {% include 'main/partials/cheers.html' %} 
+            {{ finance.saude }}
+            
+           
+        </div>
+
+        <div class="form-group-03" >
+            {% include 'main/partials/education.html' %}
+            {{ finance.educacao }}
+            
+        </div>
+
+        <div class="form-group-09" >
+            {% include 'main/partials/income.html' %} 
+            {{ finance.renda }}
+            
+            <button class="btn btn-primary btn-lg proximo" type="submit" id="update">
+                {% comment %} Finalizar {% endcomment %}
+                <a id="decoration" >Finalizar</a>
+            </button>
+        </div>
+    
+    </form>
+</body>

@@ -1,8 +1,9 @@
 from django.db.models import Sum
-from django.http import JsonResponse
+from django.http import Http404, JsonResponse
 from django.shortcuts import redirect, render
 
 from main.forms import RegisterForm
+from main.update_forms import UpdateForm
 
 from .models import Finance
 
@@ -16,11 +17,11 @@ def register_finance(request):
     
     if request.method == 'POST':
         form = RegisterForm(request.POST)
-        print(form)
+        
         if form.is_valid():
             form.save()
-            data = Finance.objects.all().order_by('-id')
-            print(data)
+            
+            
         
         
         return redirect("result")
@@ -31,9 +32,10 @@ def register_finance(request):
     })
     
 def result_finale(request):
-    
+    finance = Finance.objects.filter().last()
+  
     return render(request, 'main/pages/finale.html', context={
-        'saldo': 2000
+        'form': finance
     })
     
 def return_total_gastos(request):
@@ -48,6 +50,10 @@ def return_total_gastos(request):
     porcentagem_moradia = (moradia/renda)
     porcentagem_saude = (saude/renda)
     porcentagem_educacao = (educacao/renda)
+    valor_ideal_moradia =  int(renda) * 0.2
+    valor_ideal_saude = int(renda) * 0.08
+    valor_ideal_educacao = int(renda) * 0.12
+    
     return JsonResponse({
         'total_gastos': total,
         'saldo' : saldo,
@@ -55,8 +61,31 @@ def return_total_gastos(request):
         'saude': saude,
         'educacao':educacao,
         'renda': renda,
-        'porcentagem_moradia': f'{porcentagem_moradia:.0%}',
-        'porcentagem_saude': f'{porcentagem_saude:.0%}',
-        'porcentagem_educacao': f'{porcentagem_educacao:.0%}',
+        'porcentagem_moradia': f'{porcentagem_moradia:.1%}',
+        'porcentagem_saude': f'{porcentagem_saude:.1%}',
+        'porcentagem_educacao': f'{porcentagem_educacao:.1%}',
+        'valor_ideal_moradia': f'R$ {valor_ideal_moradia:.2f}',
+        'valor_ideal_saude': f'R$ {valor_ideal_saude:.2f}',
+        'valor_ideal_educacao': f'R$ {valor_ideal_educacao:.2f}'
     })
     
+def update_gastos(request, id):
+    finance = Finance.objects.filter(
+        pk=id,
+        ).last()
+    
+    if not finance:
+        raise Http404()
+    form = UpdateForm(
+        data=request.POST or None,
+        instance=finance
+    )
+    
+    if form.is_valid():
+        form.save()
+        
+        return redirect("result")
+    
+    return render(request, 'main/pages/register_update.html', context={
+        'finance': form
+    }) 

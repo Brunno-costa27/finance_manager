@@ -9,7 +9,7 @@
                 <p class="hidden-xs">
                     <img src="{% static 'img/trofeu.png' %}" alt="trofeu">
                 </p>
-                <h1>
+                <h1 id="description">
                     Parabéns, sobrou R$ <span id="saldo"></span> em seu orçamento.
                 </h1>
             </div>
@@ -43,15 +43,15 @@
                         <b>Atual:</b>
 
                         <span class="utilizado" id="valor-atual-moradia">
-                            30,00 
+                            
                         </span>
                     </span>
 
                     <span class="nospace">
                         <b>Ideal até:</b>
 
-                        <span class="utilizado">
-                            300,00 
+                        <span class="utilizado" id="ideal-m">
+                            
                         </span>
                     </span>
                 </p>
@@ -76,15 +76,15 @@
                         <b>Atual:</b>
     
                         <span class="utilizado" id="valor-atual-saude">
-                            30,00 
+                             
                         </span>
                     </span>
     
                     <span class="nospace">
                         <b>Ideal até:</b>
     
-                        <span class="utilizado">
-                            300,00 
+                        <span class="utilizado" id="valor-ideal-saude">
+                            
                         </span>
                     </span>
                 </p>
@@ -108,15 +108,15 @@
                         <b>Atual:</b>
     
                         <span class="utilizado" id="valor-atual-educacao">
-                            30,00 
+                            
                         </span>
                     </span>
     
                     <span class="nospace">
                         <b>Ideal até:</b>
     
-                        <span class="utilizado">
-                            300,00 
+                        <span class="utilizado" id="valor-ideal-educacao">
+                            
                         </span>
                     </span>
                 </p>
@@ -126,9 +126,14 @@
                     
                     </div>
             </div>
-            
+           
+            <div class="button-editar">
+                <button ><a href={% url "register_update" form.id %} >Editar</a></button>
+            </div>
         </section>
+
+        
     </div>
-    
+
 </body>
 </html>

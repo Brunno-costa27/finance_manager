@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.urls import path
 
 from main.views import (home, register_finance, result_finale,
-                        return_total_gastos)
+                        return_total_gastos, update_gastos)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -11,6 +11,5 @@ urlpatterns = [
     path('register', register_finance, name='register'),
     path('result', result_finale, name='result'),
     path('total', return_total_gastos, name='total'),
-    
-    
+    path('register/<int:id>/update', update_gastos, name='register_update'),
 ]
