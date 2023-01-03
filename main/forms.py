@@ -9,22 +9,26 @@ def add_attr(field, attr_name, attr_new_val):
     field.widget.attrs[attr_name] = f'{existing_attr} {attr_new_val}'.strip()
 
 class RegisterForm(forms.ModelForm):
+     
     
     def __init__(self, *args, **kwargs):
+        
         super().__init__(*args, **kwargs)
         add_attr(self.fields['moradia'], 'placeholder', 'R$ 0,00')
         add_attr(self.fields['renda'], 'placeholder', 'R$ 0,00')
         add_attr(self.fields['saude'], 'placeholder', 'R$ 0,00')
         add_attr(self.fields['educacao'], 'placeholder', 'R$ 0,00')
     
+          
+    
     def clean(self):
         data_renda = super().clean()
-        data = self.cleaned_data.get('renda')
-        
+        data = self.cleaned_data.get('moradia')
+
         print('Entrou no clean')
         print(data)
         
-        if 3 == data:
+        if 0 == data:
             raise ValidationError(
                 'errado'
             )

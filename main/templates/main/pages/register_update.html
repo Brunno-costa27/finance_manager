@@ -5,7 +5,7 @@
 
 
 
-<body id="muda">
+<body>
     <form method="POST" class="form">
         {% csrf_token %}
         <div class="form-group-01">
@@ -30,6 +30,7 @@
         <div class="form-group-09" >
             {% include 'main/partials/income.html' %} 
             {{ finance.renda }}
+            {% comment %} {{ finance.name_of_field.errors }} {% endcomment %}
             
             <button class="btn btn-primary btn-lg proximo" type="submit" id="update">
                 {% comment %} Finalizar {% endcomment %}

@@ -2,14 +2,13 @@
 from django.contrib import admin
 from django.urls import path
 
-from main.views import (home, register_finance, result_finale,
-                        return_total_gastos, update_gastos)
+from main.views import Home, Register, RegisterUpdate, Result, result_total
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name='home'),
-    path('register', register_finance, name='register'),
-    path('result', result_finale, name='result'),
-    path('total', return_total_gastos, name='total'),
-    path('register/<int:id>/update', update_gastos, name='register_update'),
+    path('', Home.as_view(), name='home'),
+    path('register', Register.as_view(), name='register'),
+    path('result', Result.as_view(), name='result'),
+    path('total', result_total, name='total'),
+    path('register/<int:id>/update', RegisterUpdate.as_view(), name='register_update'),
 ]
