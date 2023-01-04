@@ -1,8 +1,16 @@
+from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
 
+from main.models import Finance
 
-class FinanceURLsTest(TestCase):
+from .test_finance_base import FinanceTestBase
+
+
+class FinanceURLsTest(FinanceTestBase):
+    
+    def tearDown(self) -> None:
+        return super().tearDown()
     
     def test_home_url(self):
        url = reverse('home')
@@ -31,3 +39,30 @@ class FinanceURLsTest(TestCase):
     def test_home_view_loads_correct_template(self):
        response = self.client.get(reverse('home'))
        self.assertTemplateUsed(response, 'main/pages/home.html')
+       
+    def test_finance_templates_loads_finances(self):
+       finance = Finance.objects.create(
+          moradia=34,
+          saude=30,
+          educacao=30,
+          renda=100
+       )
+       pass 
+    
+    def test_create_users_finances(self):
+      self.make_user(
+        first_name='user123',
+        last_name='name123',
+        username='username123',
+        password='123456123',
+        email='username@email.com123',
+      )
+      #  user = User.objects.create_user(
+      #   first_name='user1',
+      #   last_name='name1',
+      #   username='username1',
+      #   password='1234561',
+      #   email='username@email.com1',
+      #  )
+       
+      pass
