@@ -42,18 +42,43 @@ class FinanceURLsTest(FinanceTestBase):
        response = self.client.get(reverse('total'))
        self.assertEqual(response.status_code, 200)
        
-   #  def test_total_view_returns(self):
-   #     with responses.RequestsMock() as rsps:
-   #      rsps.add(
-   #          responses.GET,
-   #          "http://127.0.0.1:8000/total",
-   #          body="{'saude': 1}",
-   #          status=200,
-   #          content_type="application/json",
-   #      )
-   #      resp = requests.get("http://127.0.0.1:8000/total")
+    def test_register_view_returns_status_code_200_ok(self):
+       response = self.client.get(reverse('register'))
+       self.assertEqual(response.status_code, 200)
+       
+    def test_result_view_returns_status_code_200_ok(self):
+       response = self.client.get(reverse('result'))
+       self.assertEqual(response.status_code, 200)
+       
+    def test_result_update_view_returns_status_code_200_ok(self):
+       response = self.client.get(reverse('register_update', kwargs={'id': 1}))
+       self.assertEqual(response.status_code, 200)
+       
+    def test_register_returns_status_code(self):
+       response = self.client.post(reverse('register'),{
+            'moradia': 345,
+            'saude': 305,
+            'educacao': 505,
+            'renda': 705,
+       },
+       follow=True,
 
-   #      assert resp.status_code == 200
+      )
+       self.assertEqual(response.status_code, 200)
+       
+    def test_register_update__returns_status_code(self):
+       response = self.client.post(reverse('register_update', kwargs={'id': 1}),{
+            'moradia': 345,
+            'saude': 305,
+            'educacao': 505,
+            'renda': 705,
+       },
+       follow=True,
+
+      )
+       self.assertEqual(response.status_code, 200)
+       
+   
       
       
       
@@ -63,20 +88,24 @@ class FinanceURLsTest(FinanceTestBase):
        self.assertTemplateUsed(response, 'main/pages/home.html')
        
     def test_finance_templates_loads_finances(self):
-      
       self.make_finance(
         moradia=345,
         saude=305,
         educacao=505,
         renda=705,
       )
-      #  finance = Finance.objects.create(
-      #     moradia=34,
-      #     saude=30,
-      #     educacao=30,
-      #     renda=100
-      #  )
-      pass 
+      pass      
+   
+    def test_finance_templates_loads_finances_return(self):
+      self.make_finance(
+        moradia=345,
+        saude=305,
+        educacao=505,
+        renda=705,
+      )
+      res = self.make_finance()
+      if res:
+          pass 
     
     def test_create_users_finances(self):
       self.make_user(
