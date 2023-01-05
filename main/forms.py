@@ -21,18 +21,18 @@ class RegisterForm(forms.ModelForm):
     
           
     
-    def clean(self):
-        data_renda = super().clean()
-        data = self.cleaned_data.get('moradia')
+    # def clean(self):
+    #     data_renda = super().clean()
+    #     data = self.cleaned_data.get('moradia')
 
-        print('Entrou no clean')
-        print(data)
+    #     print('Entrou no clean')
+    #     print(data)
         
-        if 0 == data:
-            raise ValidationError(
-                'errado'
-            )
-        return data_renda
+    #     if 0 == data:
+    #         raise ValidationError(
+    #             'errado'
+    #         )
+    #     return data_renda
      
     class Meta:
         model = Finance

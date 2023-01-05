@@ -9,20 +9,22 @@ from .models import Finance
 
 
 def result_total(request):
-        finance = Finance.objects.all()
-        ultimo_gerenciamento = finance.order_by('id').last() 
-        total = ultimo_gerenciamento.moradia + ultimo_gerenciamento.saude + ultimo_gerenciamento.educacao
-        saldo = ultimo_gerenciamento.renda - total
-        moradia = ultimo_gerenciamento.moradia
-        saude = ultimo_gerenciamento.saude
-        educacao = ultimo_gerenciamento.educacao
-        renda = ultimo_gerenciamento.renda
-        porcentagem_moradia = (moradia/renda)
-        porcentagem_saude = (saude/renda)
-        porcentagem_educacao = (educacao/renda)
-        valor_ideal_moradia =  int(renda) * 0.2
-        valor_ideal_saude = int(renda) * 0.08
-        valor_ideal_educacao = int(renda) * 0.12
+        if request.method == 'GET':
+            
+            finance = Finance.objects.all()
+            ultimo_gerenciamento = finance.order_by('id').last() 
+            total = ultimo_gerenciamento.moradia + ultimo_gerenciamento.saude + ultimo_gerenciamento.educacao
+            saldo = ultimo_gerenciamento.renda - total
+            moradia = ultimo_gerenciamento.moradia
+            saude = ultimo_gerenciamento.saude
+            educacao = ultimo_gerenciamento.educacao
+            renda = ultimo_gerenciamento.renda
+            porcentagem_moradia = (moradia/renda)
+            porcentagem_saude = (saude/renda)
+            porcentagem_educacao = (educacao/renda)
+            valor_ideal_moradia =  int(renda) * 0.2
+            valor_ideal_saude = int(renda) * 0.08
+            valor_ideal_educacao = int(renda) * 0.12
         
         return JsonResponse({
             'total_gastos': total,

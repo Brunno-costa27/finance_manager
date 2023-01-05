@@ -1,10 +1,13 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
 
+from main.models import Finance
+
 
 class FinanceTestBase(TestCase):
     def setUp(self) -> None:
         user = self.make_user()
+        finance = self.make_finance()
         return super().setUp()
     
     def make_user(
@@ -21,4 +24,18 @@ class FinanceTestBase(TestCase):
             username=username,
             password=password,
             email=email,
+        )
+        
+    def make_finance(
+        self,
+        moradia=34,
+        saude=30,
+        educacao=50,
+        renda=70,
+    ):
+        return Finance.objects.create(
+            moradia=moradia,
+            saude=saude,
+            educacao=educacao,
+            renda=renda,
         )

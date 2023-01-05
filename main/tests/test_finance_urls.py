@@ -1,3 +1,5 @@
+import requests
+import responses
 from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
@@ -36,18 +38,45 @@ class FinanceURLsTest(FinanceTestBase):
        response = self.client.get(reverse('home'))
        self.assertEqual(response.status_code, 200)
        
+    def test_total_view_returns_status_code_200_ok(self):
+       response = self.client.get(reverse('total'))
+       self.assertEqual(response.status_code, 200)
+       
+   #  def test_total_view_returns(self):
+   #     with responses.RequestsMock() as rsps:
+   #      rsps.add(
+   #          responses.GET,
+   #          "http://127.0.0.1:8000/total",
+   #          body="{'saude': 1}",
+   #          status=200,
+   #          content_type="application/json",
+   #      )
+   #      resp = requests.get("http://127.0.0.1:8000/total")
+
+   #      assert resp.status_code == 200
+      
+      
+      
+      
     def test_home_view_loads_correct_template(self):
        response = self.client.get(reverse('home'))
        self.assertTemplateUsed(response, 'main/pages/home.html')
        
     def test_finance_templates_loads_finances(self):
-       finance = Finance.objects.create(
-          moradia=34,
-          saude=30,
-          educacao=30,
-          renda=100
-       )
-       pass 
+      
+      self.make_finance(
+        moradia=345,
+        saude=305,
+        educacao=505,
+        renda=705,
+      )
+      #  finance = Finance.objects.create(
+      #     moradia=34,
+      #     saude=30,
+      #     educacao=30,
+      #     renda=100
+      #  )
+      pass 
     
     def test_create_users_finances(self):
       self.make_user(

@@ -14,18 +14,18 @@ class UpdateForm(forms.ModelForm):
         add_attr(self.fields['saude'], 'placeholder', 'R$ 0,00')
         add_attr(self.fields['educacao'], 'placeholder', 'R$ 0,00')
         
-    def clean(self):
-        data_renda = super().clean()
-        data = self.cleaned_data.get('renda')
+    # def clean(self):
+    #     data_renda = super().clean()
+    #     data = self.cleaned_data.get('renda')
         
-        print('Entrou no clean')
-        print(data)
+    #     print('Entrou no clean')
+    #     print(data)
         
-        if 3 == data:
-            raise ValidationError(
-                'errado'
-            )
-        return data_renda
+    #     if 3 == data:
+    #         raise ValidationError(
+    #             'errado'
+    #         )
+    #     return data_renda
     
     
     class Meta:
