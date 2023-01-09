@@ -7,7 +7,7 @@ class FinanceModelTest(FinanceTestBase):
     def setUp(self) -> None:
         self.finance = self.make_finance()
         return super().setUp()
-    
+     
     
     def test_finance_validation(self):
         

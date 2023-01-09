@@ -1,10 +1,4 @@
-import requests
-import responses
-from django.contrib.auth.models import User
-from django.test import TestCase
 from django.urls import reverse
-
-from main.models import Finance
 
 from .test_finance_base import FinanceTestBase
 
@@ -115,12 +109,5 @@ class FinanceURLsTest(FinanceTestBase):
         password='123456123',
         email='username@email.com123',
       )
-      #  user = User.objects.create_user(
-      #   first_name='user1',
-      #   last_name='name1',
-      #   username='username1',
-      #   password='1234561',
-      #   email='username@email.com1',
-      #  )
-       
+      
       pass
